@@ -5,18 +5,13 @@ const Landing = () => (
     <section className="landing-photo">
       <img
         src="/assets/images/landing-background.jpg"
-        alt="guy with headphones"
+        alt="desk and payments photo"
         className="landing-image"
       />
-    </section>
-
-    <section className="landing-buttons">
-      <button type="button" class="btn btn-success">
-        Sign Up
-      </button>
-      <button type="button" class="btn btn-success">
-        Sign In
-      </button>
+      <div className="hero">
+        <h1 className="hero-title">Welcome to Recoger</h1>
+        <p className="hero-description">A new way to manage group payments</p>
+      </div>
     </section>
   </div>
 );
