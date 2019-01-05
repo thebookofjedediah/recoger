@@ -4,11 +4,11 @@
   "description": "an app that allows users to collaborate on events and charges",
   "main": "src/server.js",
   "scripts": {
+    "start": "node src/server.js",
     "test": "export NODE_ENV=test && jasmine",
     "server": "nodemon src/server.js",
     "client": "npm run start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "start": "node server.js"
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "author": "Jedediah Arnold",
   "license": "ISC",
