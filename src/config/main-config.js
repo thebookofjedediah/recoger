@@ -1,5 +1,8 @@
 require("dotenv").config();
 
 module.exports = {
-  init() {}
+  init(app, express) {
+    app.set("views");
+    app.set("view engine", "react");
+  }
 };
