@@ -1,4 +1,5 @@
 const sequelize = require("../../src/db/models/index").sequelize;
+const User = require("../../src/db/models").User;
 
 describe("User", () => {
   beforeEach(done => {
@@ -12,8 +13,9 @@ describe("User", () => {
         done();
       });
   });
+
   describe("#create()", () => {
-    it("should create a user with a valid email and password", done => {
+    it("should create a User object with a valid email and password", done => {
       User.create({
         email: "test@example.com",
         password: "123456789"
@@ -29,13 +31,13 @@ describe("User", () => {
         });
     });
 
-    it("should not create a user with an invalid email or password", done => {
+    // #3
+    it("should not create a user with invalid email or password", done => {
       User.create({
-        email: "fake email",
-        password: "111111111"
+        email: "test",
+        password: "123456789"
       })
         .then(user => {
-          //code here won't matter it will error out
           done();
         })
         .catch(err => {
@@ -45,6 +47,7 @@ describe("User", () => {
           done();
         });
     });
+
     it("should not create a user with an email already taken", done => {
       User.create({
         email: "test@example.com",
@@ -56,13 +59,13 @@ describe("User", () => {
             password: "111111111"
           })
             .then(user => {
-              //code here will also skip
               done();
             })
             .catch(err => {
               expect(err.message).toContain("Validation error");
               done();
             });
+
           done();
         })
         .catch(err => {
