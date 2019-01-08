@@ -13,7 +13,7 @@ module.exports = {
         res.status(500).json(err.errors[0].message);
       } else {
         passport.authenticate("local")(req, res, () => {
-          res.json({ id: user.id, username: user.email });
+          res.json({ id: user.id, email: user.email });
         });
       }
     });
@@ -22,7 +22,7 @@ module.exports = {
     passport.authenticate("local")(req, res, function() {
       if (req.user) {
         req.flash("notice", "You've successfully signed in!");
-        res.json({ id: req.user.id, username: req.user.email });
+        res.json({ id: req.user.id, email: req.user.email });
       }
     });
   },

@@ -4,6 +4,6 @@ module.exports = {
     const userRoutes = require("../routes/user");
 
     app.use(staticRoutes);
-    app.user(userRoutes);
+    app.use(userRoutes);
   }
 };
