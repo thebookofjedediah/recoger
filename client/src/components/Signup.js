@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import { FormGroup, Form, Label, Input, Button } from "reactstrap";
 import axios from "axios";
 
@@ -15,7 +14,7 @@ class Signup extends Component {
 
   createUser(user) {
     axios
-      .post("users")
+      .post("users", user)
       .then(res => console.log("success", res))
       .catch(err => {
         console.log(err);
