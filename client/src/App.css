@@ -40,3 +40,8 @@
   color: #28a745;
   font-style: italic;
 }
+
+/* Sign Up Form */
+.sign-up-form {
+  max-width: 50%;
+}

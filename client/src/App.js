@@ -3,6 +3,7 @@ import { Route, Link } from "react-router-dom";
 import "./App.css";
 import Landing from "./components/Landing";
 import About from "./components/About";
+import Signup from "./components/Signup";
 
 class App extends Component {
   render() {
@@ -29,7 +30,7 @@ class App extends Component {
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link" href="/sign-up-form">
                   Signup
                 </a>
               </li>
@@ -49,6 +50,7 @@ class App extends Component {
         <main>
           <Route exact path="/" component={Landing} />
           <Route exact path="/about" component={About} />
+          <Route exact path="/sign-up-form" component={Signup} />
         </main>
       </div>
     );
