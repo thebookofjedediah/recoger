@@ -1,14 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import {
-  Alert,
-  FormGroup,
-  Form,
-  Label,
-  Input,
-  Button,
-  Container
-} from "reactstrap";
+import { FormGroup, Form, Label, Input, Button } from "reactstrap";
 import axios from "axios";
 
 class Signup extends Component {
@@ -22,14 +14,19 @@ class Signup extends Component {
   }
 
   createUser(user) {
-    axios.post("/users");
+    axios
+      .post("users")
+      .then(res => console.log("success", res))
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   handleSubmit = e => {
     const { email, password, passwordConfirmation } = this.state;
     e.preventDefault();
     const user = { email, password, passwordConfirmation };
-    this.props.createUser(user);
+    this.createUser(user);
   };
 
   handleChange = e => {

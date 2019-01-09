@@ -5,7 +5,7 @@ const Landing = () => (
     <section className="landing-photo">
       <img
         src="/assets/images/landing-background.jpg"
-        alt="desk and payments photo"
+        alt="desk and payments"
         className="landing-image"
       />
       <div className="hero">
