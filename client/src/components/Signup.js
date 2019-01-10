@@ -26,6 +26,7 @@ class Signup extends Component {
     e.preventDefault();
     const user = { email, password, passwordConfirmation };
     this.createUser(user);
+    localStorage.setItem("user", user.email);
   };
 
   handleChange = e => {
