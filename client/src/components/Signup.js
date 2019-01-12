@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { FormGroup, Form, Label, Input, Button } from "reactstrap";
-import { Link } from "react-router-dom";
 import axios from "axios";
 
 class Signup extends Component {
@@ -61,9 +60,7 @@ class Signup extends Component {
               value={this.state.content}
               onChange={this.handleChange}
             />
-            <Button>
-              <Link to="/dashboard">Sign Up</Link>
-            </Button>
+            <Button>Sign Up</Button>
           </FormGroup>
         </Form>
       </section>

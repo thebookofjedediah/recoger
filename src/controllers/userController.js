@@ -23,7 +23,7 @@ module.exports = {
     passport.authenticate("local")(req, res, function() {
       if (req.user) {
         req.flash("notice", "You've successfully signed in!");
-        res.json({ id: req.user.id, email: req.user.email }); //this needs to return a token
+        res.json({ id: req.user.id, email: req.user.email });
       }
     });
   },
