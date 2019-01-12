@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Router from "react-router-dom";
+import { Router, Link } from "react-router-dom";
 import { FormGroup, Form, Label, Input, Button } from "reactstrap";
 import axios from "axios";
 
@@ -55,7 +55,9 @@ class Signup extends Component {
               value={this.state.content}
               onChange={this.handleChange}
             />
-            <Button>Sign In</Button>
+            <Button>
+              <Link to="/dashboard">Sign In</Link>
+            </Button>
           </FormGroup>
         </Form>
       </section>

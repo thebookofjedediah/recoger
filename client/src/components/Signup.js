@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { FormGroup, Form, Label, Input, Button } from "reactstrap";
+import { Router, Link } from "react-router-dom";
 import axios from "axios";
 
 class Signup extends Component {
@@ -15,7 +16,7 @@ class Signup extends Component {
   createUser(user) {
     axios
       .post("users", user)
-      .then(res => console.log("success", res))
+      .then(res => this.setState({ user: res.data.email }))
       .catch(err => {
         console.log(err);
       });
@@ -26,7 +27,6 @@ class Signup extends Component {
     e.preventDefault();
     const user = { email, password, passwordConfirmation };
     this.createUser(user);
-    localStorage.setItem("user", user.email);
   };
 
   handleChange = e => {
@@ -61,7 +61,9 @@ class Signup extends Component {
               value={this.state.content}
               onChange={this.handleChange}
             />
-            <Button>Sign In</Button>
+            <Button>
+              <Link to="/dashboard">Sign Up</Link>
+            </Button>
           </FormGroup>
         </Form>
       </section>
