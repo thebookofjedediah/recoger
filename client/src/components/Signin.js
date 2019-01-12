@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Router from "react-router-dom";
 import { FormGroup, Form, Label, Input, Button } from "reactstrap";
 import axios from "axios";
 
@@ -8,14 +9,15 @@ class Signup extends Component {
     this.state = {
       email: "",
       password: "",
-      confirmPassword: ""
+      confirmPassword: "",
+      user: ""
     };
   }
 
   signInUser(user) {
     axios
       .post("users/sign_in", user)
-      .then(res => console.log("success", res))
+      .then(res => this.setState({ user: res.data.email }))
       .catch(err => {
         console.log(err);
       });
@@ -26,7 +28,6 @@ class Signup extends Component {
     e.preventDefault();
     const user = { email, password };
     this.signInUser(user);
-    localStorage.setItem("user", user.email);
   };
 
   handleChange = e => {

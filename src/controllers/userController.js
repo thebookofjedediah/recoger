@@ -1,5 +1,6 @@
 const userQueries = require("../db/queries.users.js");
 const passport = require("passport");
+const jwt = require("jsonwebtoken");
 
 module.exports = {
   create(req, res, next) {
@@ -22,7 +23,7 @@ module.exports = {
     passport.authenticate("local")(req, res, function() {
       if (req.user) {
         req.flash("notice", "You've successfully signed in!");
-        res.json({ id: req.user.id, email: req.user.email });
+        res.json({ id: req.user.id, email: req.user.email }); //this needs to return a token
       }
     });
   },
