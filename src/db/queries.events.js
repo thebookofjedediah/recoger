@@ -3,7 +3,7 @@ const Charge = require("./models").Charge;
 
 module.exports = {
   getAllEvents(callback) {
-    return Event.all()
+    return Event.findAll()
       .then(events => {
         callback(null, event);
       })

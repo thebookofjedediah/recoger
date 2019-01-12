@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Router } from "react-router-dom";
+//import { Router } from "react-router-dom";
 import axios from "axios";
 
 class Dashboard extends Component {
@@ -12,7 +12,12 @@ class Dashboard extends Component {
   }
 
   componentWillMount(events) {
-    axios.get("/events", events).then(res => console.log("success", res));
+    axios
+      .get("/events", events)
+      .then(res => console.log("success", res))
+      .catch(err => {
+        console.log(err);
+      });
   }
 
   render() {

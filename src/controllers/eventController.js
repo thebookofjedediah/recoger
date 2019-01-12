@@ -4,9 +4,9 @@ module.exports = {
   index(req, res, next) {
     eventQueries.getAllEvents((err, events) => {
       if (err) {
-        res.redirect(500, "/");
+        res.status(500).json(err.message);
       } else {
-        res.render("events/index", { events });
+        res.json({ event: event.title });
       }
     });
   },
