@@ -5,7 +5,7 @@ module.exports = {
   getAllEvents(callback) {
     return Event.findAll()
       .then(events => {
-        callback(null, event);
+        callback(null, events);
       })
       .catch(err => {
         callback(err);
@@ -30,7 +30,8 @@ module.exports = {
   addEvent(newEvent, callback) {
     return Event.create({
       title: newEvent.title,
-      description: newEvent.description
+      description: newEvent.description,
+      userId: newEvent.userId
     })
       .then(event => {
         callback(null, event);

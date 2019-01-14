@@ -2,35 +2,34 @@ import React, { Component } from "react";
 import { FormGroup, Form, Label, Input, Button } from "reactstrap";
 import axios from "axios";
 
-class Signup extends Component {
+class CreateEvent extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      email: "",
-      password: "",
-      user: ""
+      title: "",
+      description: ""
     };
   }
 
-  signInUser(user) {
-    console.log("Made it to sign In user", user);
+  createEvent(event) {
+    console.log("Made it to event creation", event);
     axios
-      .post("users/sign_in", user)
+      .post("/events/create", event)
       .then(res => {
-        localStorage.setItem("user", res.data.email);
-        localStorage.setItem("userId", res.data.id);
+        //  this.setState({ user: res.data.email });
         this.props.history.push("/dashboard");
       })
       .catch(err => {
-        console.log("At error signing", err);
+        console.log("At error event create", err);
       });
   }
 
   handleSubmit = e => {
-    const { email, password } = this.state;
+    const { title, description } = this.state;
     e.preventDefault();
-    const user = { email, password };
-    this.signInUser(user);
+    const userId = localStorage.getItem("userId");
+    const event = { title, description, userId };
+    this.createEvent(event);
   };
 
   handleChange = e => {
@@ -44,21 +43,21 @@ class Signup extends Component {
       <section className="sign-up-form">
         <Form onSubmit={this.handleSubmit}>
           <FormGroup>
-            <Label for="email">Email: </Label>
+            <Label for="body">Title: </Label>
             <Input
-              type="email"
-              id="email"
+              type="text"
+              id="title"
               value={this.state.content}
               onChange={this.handleChange}
             />
-            <Label for="password">Password: </Label>
+            <Label for="description">Body: </Label>
             <Input
-              type="password"
-              id="password"
+              type="textarea"
+              id="description"
               value={this.state.content}
               onChange={this.handleChange}
             />
-            <Button color="success">Sign In</Button>
+            <Button color="success">Create Event</Button>
           </FormGroup>
         </Form>
       </section>
@@ -66,4 +65,4 @@ class Signup extends Component {
   }
 }
 
-export default Signup;
+export default CreateEvent;

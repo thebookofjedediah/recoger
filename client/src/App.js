@@ -8,6 +8,7 @@ import Signup from "./components/Signup";
 import Signin from "./components/Signin";
 import Navbar from "./components/Navbar";
 import Dashboard from "./components/Dashboard";
+import CreateEvent from "./components/CreateEvent";
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
             <Route exact path="/sign-up-form" component={Signup} />
             <Route exact path="/sign-in-form" component={Signin} />
             <Route path="/dashboard" component={Dashboard} />
+            <Route path="/create-event-form" component={CreateEvent} />
           </main>
         </div>
       </BrowserRouter>

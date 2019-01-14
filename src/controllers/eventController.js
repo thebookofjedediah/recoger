@@ -6,20 +6,21 @@ module.exports = {
       if (err) {
         res.status(500).json(err.message);
       } else {
-        res.json({ event: event.title });
+        res.json({ events: events });
       }
     });
   },
   create(req, res, next) {
     let newEvent = {
       title: req.body.title,
-      description: req.body.description
+      description: req.body.description,
+      userId: req.body.userId
     };
     eventQueries.addEvent(newEvent, (err, event) => {
       if (err) {
-        res.redirect(500, "/events/new");
+        res.status(500).json(err.errors[0].message);
       } else {
-        res.redirect(303, `/events/${event.id}`);
+        res.json({ title: event.title, description: event.description });
       }
     });
   },

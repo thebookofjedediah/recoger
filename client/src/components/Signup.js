@@ -13,11 +13,15 @@ class Signup extends Component {
   }
 
   createUser(user) {
+    console.log("Made it to sign up user", user);
     axios
       .post("users", user)
-      .then(res => this.setState({ user: res.data.email }))
+      .then(res => {
+        this.setState({ user: res.data.email });
+        this.props.history.push("/dashboard");
+      })
       .catch(err => {
-        console.log(err);
+        console.log("At error signing up", err);
       });
   }
 
@@ -60,7 +64,7 @@ class Signup extends Component {
               value={this.state.content}
               onChange={this.handleChange}
             />
-            <Button>Sign Up</Button>
+            <Button color="success">Sign Up</Button>
           </FormGroup>
         </Form>
       </section>
