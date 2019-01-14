@@ -15,7 +15,7 @@ class Signup extends Component {
   signInUser(user) {
     console.log("Made it to sign In user", user);
     axios
-      .post("users/sign_in", user)
+      .post("/users/sign_in", user)
       .then(res => {
         localStorage.setItem("user", res.data.email);
         localStorage.setItem("userId", res.data.id);

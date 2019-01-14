@@ -1,53 +1,57 @@
-import React from "react";
-import { Link } from "react-router-dom";
+// import React from "react";
+// import { Link } from "react-router-dom";
 
-const Navbar = () => {
-  const user = localStorage.getItem("user");
-  return (
-    <div className="entire-navbar">
-      <nav class="navbar navbar-expand-md bg-success navbar-dark">
-        <a class="navbar-brand" href="/">
-          Recoger
-        </a>
-        <Link to="/about/">About</Link>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#collapsibleNavbar"
-        >
-          <span class="navbar-toggler-icon" />
-        </button>
-        <div class="collapse navbar-collapse" id="collapsibleNavbar">
-          <ul class="navbar-nav ml-auto">
+import React from "react";
+import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
+import axios from "axios";
+
+export default class Example extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      email: localStorage.getItem("user")
+    };
+  }
+
+  handleSignOut() {
+    axios.then(res => {
+      console.log("made it to sign out");
+      localStorage.removeItem("user", res.data.email);
+      localStorage.removeItem("userId", res.data.id);
+      this.props.history.push("/");
+    });
+  }
+
+  render() {
+    const user = localStorage.getItem("user");
+    return (
+      <div>
+        <Navbar color="success" light expand="md">
+          <NavbarBrand href="/">Recoger</NavbarBrand>
+          <Nav className="ml-auto" navbar>
             {!user && (
-              <li class="nav-item">
-                <a class="nav-link" href="/sign-in-form">
-                  Log In
-                </a>
-              </li>
+              <NavItem>
+                <NavLink href="/sign-in-form">Sign In</NavLink>
+              </NavItem>
             )}
             {!user && (
-              <li class="nav-item">
-                <a class="nav-link" href="/sign-up-form">
-                  Sign Up
-                </a>
-              </li>
+              <NavItem>
+                <NavLink href="/sign-up-form">Sign Up</NavLink>
+              </NavItem>
             )}
             {user && (
-              <li class="nav-item">
-                <a class="nav-link">Logout</a>
-              </li>
+              <NavItem>
+                <NavLink onClick={this.props.handleSignOut}>Sign Out</NavLink>
+              </NavItem>
             )}
-          </ul>
-        </div>
-      </nav>
-
-      <nav class="navbar navbar-expand-sm bg-success navbar-dark fixed-bottom">
-        <p>All rights reserved, Recoger 2019</p>
-      </nav>
-    </div>
-  );
-};
-
-export default Navbar;
+            {user && (
+              <NavItem>
+                <NavLink href="/dashboard">Dashboard</NavLink>
+              </NavItem>
+            )}
+          </Nav>
+        </Navbar>
+      </div>
+    );
+  }
+}

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-//import { Router } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Button } from "reactstrap";
 import axios from "axios";
 
@@ -29,7 +29,8 @@ class Dashboard extends Component {
         <div>
           events:{" "}
           {this.state.events.map(event => (
-            <div>{event.title}</div>
+            <Link to={/events/}>{event.title}</Link>
+            //`${this.props.event.id}`
           ))}
         </div>
         <section className="events" />
