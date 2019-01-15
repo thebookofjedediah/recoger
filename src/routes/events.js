@@ -6,8 +6,8 @@ const validation = require("./validation");
 router.get("/events", eventController.index);
 router.post("/events/create", eventController.create);
 router.get("/events/:id", eventController.show);
-router.post("/events/:id/destroy", eventController.destroy);
-router.get("/events/:id/edit", eventController.edit);
-router.post("/events/:id/update", eventController.update);
+// router.post("/events/:id/destroy", eventController.destroy);
+// router.get("/events/:id/edit", eventController.edit);
+// router.post("/events/:id/update", eventController.update);
 
 module.exports = router;
