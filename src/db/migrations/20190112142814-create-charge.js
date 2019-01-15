@@ -20,6 +20,14 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false
       },
+      userId: {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
+      eventId: {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

@@ -10,16 +10,43 @@ class Event extends Component {
     };
   }
   componentWillMount() {
-    axios
-      .get(`/event/${this.props.match.params.id}`)
-      .then(res => this.setState({ event: res.data.event }));
+    axios.get(`/event/${this.props.match.params.id}`).then(res =>
+      this.setState({
+        event: res.data.event,
+        charges: res.data.event.charges
+      })
+    );
   }
 
   render() {
     return (
-      <div className="entire-event-page">
+      <section className="entire-event-page">
         {this.state.event ? <h2>{this.state.event.title}</h2> : "loading"}
-      </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Charge For:</th>
+              <th>Description</th>
+              <th>Amount</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              {this.state.charges.map(charges => (
+                <td>{charges.title}</td>
+              ))}
+
+              {this.state.charges.map(charges => (
+                <td>{charges.description}</td>
+              ))}
+
+              {this.state.charges.map(charges => (
+                <td>{charges.amount}</td>
+              ))}
+            </tr>
+          </tbody>
+        </table>
+      </section>
     );
   }
 }
