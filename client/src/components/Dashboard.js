@@ -31,8 +31,9 @@ class Dashboard extends Component {
           <div>
             events:{" "}
             {this.state.events.map(event => (
-              <Link to={/events/}>{event.title}</Link>
-              //`${this.props.event.id}`
+              <Link to={`/event/${event.id}`} className="event-list">
+                {event.title}
+              </Link>
             ))}
           </div>
         )}

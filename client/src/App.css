@@ -45,3 +45,8 @@
 .sign-up-form {
   max-width: 50%;
 }
+
+/* Dashboard  */
+.event-list {
+  display: block;
+}

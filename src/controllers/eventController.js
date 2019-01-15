@@ -25,11 +25,11 @@ module.exports = {
     });
   },
   show(req, res, next) {
-    eventQueries.getEvent(req.params.id, (err, topic) => {
+    eventQueries.getEvent(req.params.id, (err, event) => {
       if (err || event == null) {
         res.redirect(404, "/");
       } else {
-        res.render("events/show", { event });
+        res.json({ event });
       }
     });
   }

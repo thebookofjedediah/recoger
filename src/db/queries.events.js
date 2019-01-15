@@ -11,19 +11,15 @@ module.exports = {
         callback(err);
       });
   },
-  getEvent(callback) {
-    return Event.findById(id, {
-      include: [
-        {
-          model: Charge,
-          as: "charges"
-        }
-      ]
-    })
+  getEvent(id, callback) {
+    console.log("Event query", id);
+    return Event.findById(id)
       .then(event => {
+        console.log("made it success");
         callback(null, event);
       })
       .catch(err => {
+        console.log("Error", err);
         callback(err);
       });
   },
