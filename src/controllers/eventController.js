@@ -26,7 +26,7 @@ module.exports = {
   },
   show(req, res, next) {
     eventQueries.getEvent(req.params.id, (err, topic) => {
-      if (err || topic == null) {
+      if (err || event == null) {
         res.redirect(404, "/");
       } else {
         res.render("events/show", { event });

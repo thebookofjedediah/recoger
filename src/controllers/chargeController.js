@@ -1,26 +1,27 @@
-const eventQueries = require("../db/queries.events.js");
+const chargeQueries = require("../db/queries.charges.js");
 
 module.exports = {
   index(req, res, next) {
-    eventQueries.getAllEvents((err, events) => {
+    chargeQueries.getAllCharges((err, events) => {
       if (err) {
         res.status(500).json(err.message);
       } else {
-        res.json({ events: events });
+        res.json({ charges: charges });
       }
     });
   },
   create(req, res, next) {
-    let newEvent = {
+    let newCharge = {
       title: req.body.title,
       description: req.body.description,
-      userId: req.body.userId
+      userId: req.body.userId,
+      eventId: req.body.eventId
     };
-    eventQueries.addEvent(newEvent, (err, event) => {
+    chargeQueries.addCharge(newCharge, (err, charge) => {
       if (err) {
         res.status(500).json(err.errors[0].message);
       } else {
-        res.json({ title: event.title, description: event.description });
+        res.json({ title: charge.title, description: charge.description });
       }
     });
   }
