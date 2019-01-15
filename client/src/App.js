@@ -6,7 +6,7 @@ import Landing from "./components/Landing";
 import About from "./components/About";
 import Signup from "./components/Signup";
 import Signin from "./components/Signin";
-import Navbar from "./components/Navbar";
+import CustomNav from "./components/CustomNav";
 import Dashboard from "./components/Dashboard";
 import CreateEvent from "./components/CreateEvent";
 import Event from "./components/Event";
@@ -17,8 +17,8 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
-          <Navbar />
           <main>
+            <Route component={CustomNav} />
             <Route exact path="/" component={Landing} />
             <Route exact path="/about" component={About} />
             <Route exact path="/sign-up-form" component={Signup} />

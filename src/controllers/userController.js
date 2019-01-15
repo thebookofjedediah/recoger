@@ -26,5 +26,10 @@ module.exports = {
         res.json({ id: req.user.id, email: req.user.email });
       }
     });
+  },
+  signOut(req, res, next) {
+    req.logout();
+    req.flash("notice", "You've successfully signed out!");
+    res.json({ success: true });
   }
 };

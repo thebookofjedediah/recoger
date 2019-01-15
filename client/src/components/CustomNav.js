@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Component } from "react";
 import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
+import axios from "axios";
 
-export default class Example extends React.Component {
+export default class CustomNav extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,8 +12,11 @@ export default class Example extends React.Component {
 
   handleSignOut() {
     console.log("made it to sign out");
-    localStorage.removeItem("user", this.email);
-    localStorage.removeItem("userId", this.id);
+    axios.get("/users/sign_out").then(res => {
+      localStorage.removeItem("user", this.email);
+      localStorage.removeItem("userId", this.id);
+      this.props.history.push("/dashboard");
+    });
   }
 
   render() {
@@ -34,9 +38,7 @@ export default class Example extends React.Component {
             )}
             {user && (
               <NavItem>
-                <NavLink onClick={this.handleSignOut} href="/">
-                  Sign Out
-                </NavLink>
+                <NavLink onClick={this.handleSignOut}>Sign Out</NavLink>
               </NavItem>
             )}
             {user && (
