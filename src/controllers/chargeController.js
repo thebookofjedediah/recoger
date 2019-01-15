@@ -14,6 +14,7 @@ module.exports = {
     let newCharge = {
       title: req.body.title,
       description: req.body.description,
+      amount: req.body.amount,
       userId: req.body.userId,
       eventId: req.body.eventId
     };
@@ -21,7 +22,11 @@ module.exports = {
       if (err) {
         res.status(500).json(err.errors[0].message);
       } else {
-        res.json({ title: charge.title, description: charge.description });
+        res.json({
+          title: charge.title,
+          description: charge.description,
+          amount: charge.amount
+        });
       }
     });
   }

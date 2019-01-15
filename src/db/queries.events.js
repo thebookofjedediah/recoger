@@ -12,7 +12,6 @@ module.exports = {
       });
   },
   getEvent(id, callback) {
-    console.log("Event query", id);
     return Event.findById(id, {
       include: [
         {
@@ -22,7 +21,6 @@ module.exports = {
       ]
     })
       .then(event => {
-        console.log("made it success");
         callback(null, event);
       })
       .catch(err => {

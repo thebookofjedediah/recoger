@@ -34,7 +34,9 @@ export default class Example extends React.Component {
             )}
             {user && (
               <NavItem>
-                <NavLink onClick={this.handleSignOut}>Sign Out</NavLink>
+                <NavLink onClick={this.handleSignOut} href="/">
+                  Sign Out
+                </NavLink>
               </NavItem>
             )}
             {user && (

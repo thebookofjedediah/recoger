@@ -12,8 +12,8 @@ module.exports = {
   },
   getCharge(callback) {
     return Charge.findById(id)
-      .then(event => {
-        callback(null, event);
+      .then(charge => {
+        callback(null, charge);
       })
       .catch(err => {
         callback(err);
@@ -23,7 +23,9 @@ module.exports = {
     return Charge.create({
       title: newCharge.title,
       description: newCharge.description,
-      userId: newCharge.userId
+      amount: newCharge.amount,
+      userId: newCharge.userId,
+      eventId: newCharge.eventId
     })
       .then(charge => {
         callback(null, charge);

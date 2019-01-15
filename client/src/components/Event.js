@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Button, Table } from "reactstrap";
 import axios from "axios";
 
 class Event extends Component {
@@ -22,7 +23,7 @@ class Event extends Component {
     return (
       <section className="entire-event-page">
         {this.state.event ? <h2>{this.state.event.title}</h2> : "loading"}
-        <table>
+        <Table bordered>
           <thead>
             <tr>
               <th>Charge For:</th>
@@ -45,7 +46,15 @@ class Event extends Component {
               ))}
             </tr>
           </tbody>
-        </table>
+        </Table>
+        <Button
+          className="sign-up-button"
+          color="success"
+          size="lg"
+          href={`/event/${this.state.event.id}/create-charge`}
+        >
+          Add a Charge
+        </Button>
       </section>
     );
   }
