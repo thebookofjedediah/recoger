@@ -22,7 +22,7 @@ class Signup extends Component {
         this.props.history.push("/dashboard");
       })
       .catch(err => {
-        console.log("At error signing", err);
+        console.log("At error signing in", err);
       });
   }
 

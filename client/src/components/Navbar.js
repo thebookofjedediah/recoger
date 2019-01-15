@@ -1,9 +1,5 @@
-// import React from "react";
-// import { Link } from "react-router-dom";
-
 import React from "react";
 import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
-import axios from "axios";
 
 export default class Example extends React.Component {
   constructor(props) {
@@ -14,12 +10,9 @@ export default class Example extends React.Component {
   }
 
   handleSignOut() {
-    axios.then(res => {
-      console.log("made it to sign out");
-      localStorage.removeItem("user", res.data.email);
-      localStorage.removeItem("userId", res.data.id);
-      this.props.history.push("/");
-    });
+    console.log("made it to sign out");
+    localStorage.removeItem("user", this.email);
+    localStorage.removeItem("userId", this.id);
   }
 
   render() {
@@ -41,7 +34,7 @@ export default class Example extends React.Component {
             )}
             {user && (
               <NavItem>
-                <NavLink onClick={this.props.handleSignOut}>Sign Out</NavLink>
+                <NavLink onClick={this.handleSignOut}>Sign Out</NavLink>
               </NavItem>
             )}
             {user && (

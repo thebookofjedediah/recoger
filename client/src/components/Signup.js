@@ -17,7 +17,8 @@ class Signup extends Component {
     axios
       .post("users", user)
       .then(res => {
-        this.setState({ user: res.data.email });
+        localStorage.setItem("user", res.data.email);
+        localStorage.setItem("userId", res.data.id);
         this.props.history.push("/dashboard");
       })
       .catch(err => {

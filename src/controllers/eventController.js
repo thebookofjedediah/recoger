@@ -32,32 +32,32 @@ module.exports = {
         res.render("events/show", { event });
       }
     });
-  },
-  destroy(req, res, next) {
-    eventQueries.deleteEvent(req.params.id, (err, event) => {
-      if (err) {
-        res.redirect(500, `/events/${event.id}`);
-      } else {
-        res.redirect(303, "/events");
-      }
-    });
-  },
-  edit(req, res, next) {
-    eventQueries.getEvent(req.params.id, (err, event) => {
-      if (err || event == null) {
-        res.redirect(404, "/");
-      } else {
-        res.render("events/edit", { event });
-      }
-    });
-  },
-  update(req, res, next) {
-    eventQueries.updateEvent(req.params.id, req.body, (err, events) => {
-      if (err || topic == null) {
-        res.redirect(404, `/events/${req.params.id}/edit`);
-      } else {
-        res.redirect(`/events/${event.id}`);
-      }
-    });
   }
+  // destroy(req, res, next) {
+  //   eventQueries.deleteEvent(req.params.id, (err, event) => {
+  //     if (err) {
+  //       res.redirect(500, `/events/${event.id}`);
+  //     } else {
+  //       res.redirect(303, "/events");
+  //     }
+  //   });
+  // },
+  // edit(req, res, next) {
+  //   eventQueries.getEvent(req.params.id, (err, event) => {
+  //     if (err || event == null) {
+  //       res.redirect(404, "/");
+  //     } else {
+  //       res.render("events/edit", { event });
+  //     }
+  //   });
+  // },
+  // update(req, res, next) {
+  //   eventQueries.updateEvent(req.params.id, req.body, (err, events) => {
+  //     if (err || topic == null) {
+  //       res.redirect(404, `/events/${req.params.id}/edit`);
+  //     } else {
+  //       res.redirect(`/events/${event.id}`);
+  //     }
+  //   });
+  // }
 };
