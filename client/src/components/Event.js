@@ -55,6 +55,10 @@ class Event extends Component {
         >
           Add a Charge
         </Button>
+        <div>
+          <h4>Total cost:</h4>
+          <p>total goes here</p>
+        </div>
       </section>
     );
   }
