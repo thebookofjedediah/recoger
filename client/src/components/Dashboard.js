@@ -26,10 +26,10 @@ class Dashboard extends Component {
     const user = localStorage.getItem("user");
     return (
       <div className="entire-dashboard">
-        {user && <div>user: {this.state.email}</div>}
+        {user && <h4>user: {this.state.email}</h4>}
         {user && (
-          <div>
-            events:{" "}
+          <div event-list-container>
+            <h2 className="event-list">Events:</h2>{" "}
             {this.state.events.map(event => (
               <Link to={`/event/${event.id}`} className="event-list">
                 {event.title}

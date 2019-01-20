@@ -41,7 +41,7 @@ class Signup extends Component {
 
   render() {
     return (
-      <section className="sign-up-form">
+      <section className="sign-in-form">
         <Form onSubmit={this.handleSubmit}>
           <FormGroup>
             <Label for="email">Email: </Label>

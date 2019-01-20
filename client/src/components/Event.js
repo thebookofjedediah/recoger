@@ -20,32 +20,32 @@ class Event extends Component {
   }
 
   render() {
+    //tally up amounts into a variable - divide it by the number of people
+    //subtotal += charges.amount
+    //for(let i=0; i<=charges.length; i++){
+    //  let subtotal += charges.amount;
+    //}
+    const charges = this.state.charges.map(charges => (
+      <tr>
+        <td>{charges.userId}</td>
+        <td>{charges.title}</td>
+        <td>{charges.description}</td>
+        <td>{charges.amount}</td>
+      </tr>
+    ));
     return (
       <section className="entire-event-page">
         {this.state.event ? <h2>{this.state.event.title}</h2> : "loading"}
-        <Table bordered>
+        <Table className="charges-table" bordered>
           <thead>
             <tr>
-              <th>Charge For:</th>
+              <th>User ID</th>
+              <th>Charge For</th>
               <th>Description</th>
               <th>Amount</th>
             </tr>
           </thead>
-          <tbody>
-            <tr>
-              {this.state.charges.map(charges => (
-                <td>{charges.title}</td>
-              ))}
-
-              {this.state.charges.map(charges => (
-                <td>{charges.description}</td>
-              ))}
-
-              {this.state.charges.map(charges => (
-                <td>{charges.amount}</td>
-              ))}
-            </tr>
-          </tbody>
+          <tbody>{charges}</tbody>
         </Table>
         <Button
           className="sign-up-button"
