@@ -25,14 +25,21 @@ class Event extends Component {
     //for(let i=0; i<=charges.length; i++){
     //  let subtotal += charges.amount;
     //}
-    const charges = this.state.charges.map(charges => (
-      <tr>
-        <td>{charges.userId}</td>
-        <td>{charges.title}</td>
-        <td>{charges.description}</td>
-        <td>{charges.amount}</td>
-      </tr>
-    ));
+    let total = 0;
+    let table = {};
+
+    const charges = this.state.charges.map(charge => {
+      total += charge.amount;
+      table[charge.userId] = true;
+      return (
+        <tr>
+          <td>{charge.userId}</td>
+          <td>{charge.title}</td>
+          <td>{charge.description}</td>
+          <td>{charge.amount}</td>
+        </tr>
+      );
+    });
     return (
       <section className="entire-event-page">
         {this.state.event ? <h2>{this.state.event.title}</h2> : "loading"}
@@ -57,7 +64,10 @@ class Event extends Component {
         </Button>
         <div>
           <h4>Total cost:</h4>
-          <p>total goes here</p>
+          <p>{total}</p>
+          <h4>Each User Should Pay:</h4>
+          <p>{Math.round((total / Object.keys(table).length) * 100) / 100}</p>
+          <div>{console.log(table)}</div>
         </div>
       </section>
     );
