@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Button, Table } from "reactstrap";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 class Event extends Component {
@@ -54,13 +55,10 @@ class Event extends Component {
           </thead>
           <tbody>{charges}</tbody>
         </Table>
-        <Button
-          className="sign-up-button"
-          color="success"
-          size="lg"
-          href={`/event/${this.state.event.id}/create-charge`}
-        >
-          Add a Charge
+        <Button className="sign-up-button" color="success" size="lg">
+          <Link to={`/event/${this.state.event.id}/create-charge`}>
+            Add a Charge
+          </Link>
         </Button>
         <div>
           <h4>Total cost:</h4>

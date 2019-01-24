@@ -38,13 +38,8 @@ class Dashboard extends Component {
           </div>
         )}
         {user && (
-          <Button
-            className="create-new-event"
-            color="success"
-            size="lg"
-            href="/create-event-form"
-          >
-            Create New Event
+          <Button className="create-new-event" color="success" size="lg">
+            <Link to="/create-event-form">Create New Event</Link>
           </Button>
         )}
         {!user && (
@@ -53,16 +48,11 @@ class Dashboard extends Component {
               New to Recoger? Sign in to see a dashboard to manage your
               payments!
             </p>
-            <Button
-              className="sign-up-button"
-              color="success"
-              size="lg"
-              href="/sign-up-form"
-            >
-              Sign Up Now!
+            <Button className="sign-up-button" color="success" size="lg">
+              <Link to="/sign-up-form">Sign Up Now!</Link>
             </Button>
             <p className="dashboard-sign-in">Already have an account?</p>
-            <a href="/sign-in-form">Sign In</a>
+            <Link to="/sign-in-form">Sign In</Link>
           </div>
         )}
       </div>
