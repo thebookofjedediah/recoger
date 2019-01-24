@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import axios from "axios";
 
 export default class CustomNav extends Component {
@@ -34,12 +34,12 @@ export default class CustomNav extends Component {
           <Nav className="ml-auto" navbar>
             {!user && (
               <NavItem>
-                <NavLink href="/sign-in-form">Sign In</NavLink>
+                <Link to="/sign-in-form">Sign In</Link>
               </NavItem>
             )}
             {!user && (
               <NavItem>
-                <NavLink href="/sign-up-form">Sign Up</NavLink>
+                <Link to="/sign-up-form">Sign Up</Link>
               </NavItem>
             )}
             {user && (
@@ -49,7 +49,7 @@ export default class CustomNav extends Component {
             )}
             {user && (
               <NavItem>
-                <NavLink href="/dashboard">Dashboard</NavLink>
+                <Link to="/dashboard">Dashboard</Link>
               </NavItem>
             )}
           </Nav>
